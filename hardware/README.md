@@ -1,12 +1,10 @@
 # Hardware
 
-Esta carpeta agrupa la documentación de hardware del kit BattleBots 2026-1.
+Documentación de hardware del kit BattleBots 2026-1.
 
-## Alcance actual
+## PCB
 
-El proyecto contempla una PCB educativa diseñada para ordenar el montaje de la ESP32-S3, drivers TB6612FNG, motores y actuador de ataque durante los talleres.
-
-Los archivos de fabricación, esquemáticos o guías de ensamblaje deben agregarse aquí cuando estén listos para publicación.
+El kit contempla una PCB educativa para integrar ESP32-S3, drivers TB6612FNG, motores y actuador de ataque durante los talleres.
 
 ## Referencias relacionadas
 

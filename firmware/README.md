@@ -1,6 +1,6 @@
 # Firmware
 
-Esta carpeta contiene el firmware Arduino para el robot BattleBots 2026-1.
+Firmware Arduino para el robot BattleBots 2026-1.
 
 ## Sketch principal
 
@@ -23,4 +23,4 @@ Esta carpeta contiene el firmware Arduino para el robot BattleBots 2026-1.
 
 ## Nota de operación
 
-El sketch crea una red Wi-Fi local para controlar el robot desde un navegador móvil. Las credenciales de operación se definen en el firmware y deben ajustarse según el kit o taller donde se despliegue.
+El sketch crea una red Wi-Fi local y expone una interfaz web para control desde navegador móvil. La configuración de red se define en el código fuente.
