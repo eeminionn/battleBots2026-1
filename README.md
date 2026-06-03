@@ -74,6 +74,10 @@ flowchart LR
 
 Abrir el firmware en Arduino IDE o una toolchain compatible con Arduino Framework, seleccionar el perfil de placa ESP32-S3 y cargar el sketch al controlador.
 
+Firmware principal:
+
+- [`firmware/battlebot_controller/battlebot_controller.ino`](./firmware/battlebot_controller/battlebot_controller.ino)
+
 Librerías requeridas:
 
 - `WiFi`
@@ -174,12 +178,40 @@ Este modelo permite avance, retroceso, desplazamiento lateral, rotación sobre e
 | Servo 180° | 1 | Primer mecanismo de ataque |
 | PCB educativa | 1 | Soporte de conexión para el taller |
 
+## Pinout
+
+El pinout se mantiene explícito porque es parte crítica del montaje, la depuración y la trazabilidad del kit.
+
+### Motores
+
+| Señal | GPIO | Función | Módulo |
+| --- | ---: | --- | --- |
+| `M1_IN1` | 5 | Dirección motor adelante izquierda | TB6612FNG #1 |
+| `M1_IN2` | 4 | Dirección motor adelante izquierda | TB6612FNG #1 |
+| `M1_PWM` | 6 | PWM motor adelante izquierda | TB6612FNG #1 |
+| `M2_IN1` | 15 | Dirección motor adelante derecha | TB6612FNG #1 |
+| `M2_IN2` | 7 | Dirección motor adelante derecha | TB6612FNG #1 |
+| `M2_PWM` | 16 | PWM motor adelante derecha | TB6612FNG #1 |
+| `M3_IN1` | 17 | Dirección motor atrás izquierda | TB6612FNG #2 |
+| `M3_IN2` | 18 | Dirección motor atrás izquierda | TB6612FNG #2 |
+| `M3_PWM` | 38 | PWM motor atrás izquierda | TB6612FNG #2 |
+| `M4_IN1` | 39 | Dirección motor atrás derecha | TB6612FNG #2 |
+| `M4_IN2` | 40 | Dirección motor atrás derecha | TB6612FNG #2 |
+| `M4_PWM` | 41 | PWM motor atrás derecha | TB6612FNG #2 |
+| `MOTOR_STBY` | 42 | Standby compartido de drivers | TB6612FNG #1 y #2 |
+
+### Actuador
+
+| Señal | GPIO | Función |
+| --- | ---: | --- |
+| `SERVO_ATTACK1_PIN` | 11 | Señal del servo principal de ataque |
+
 Referencia del actuador principal:
 
 ```cpp
 SERVO_ATTACK1_PIN = 11
-SERVO_REST = 0
-SERVO_ATTACK = 120
+SERVO_REPOSO = 0
+SERVO_ATAQUE = 120
 ```
 
 Recomendaciones eléctricas:
@@ -234,11 +266,13 @@ Estructura recomendada a medida que el proyecto crezca:
 ├── README.md
 ├── LICENSE
 ├── firmware/
+│   ├── README.md
 │   └── battlebot_controller/
+│       └── battlebot_controller.ino
 ├── hardware/
-│   ├── pcb/
-│   └── assembly/
+│   └── README.md
 └── docs/
+    ├── pinout.md
     ├── assets/
     └── workshops/
 ```
