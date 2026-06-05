@@ -19,14 +19,14 @@
 
 `battleBots2026-1` reúne el firmware, documentación técnica y referencias de montaje para un robot tipo **BattleBots / Boombot** desarrollado por **EIRI (Equipo Interdisciplinario de Robótica e Innovación)** junto a **Ingeniería Civil Informática de la Universidad del Desarrollo (UDD)**.
 
-El robot utiliza una **ESP32-S3** como controlador principal. La placa crea una red Wi-Fi local, expone una interfaz web embebida y controla una base mecanum de cuatro motores DC junto a un actuador de ataque por servo.
+El robot utiliza una **ESP32-S3** como controlador principal. La placa crea una red Wi-Fi local, expone una interfaz web y controla una base mecanum de cuatro motores DC junto a un actuador de ataque por servo.
 
 El proyecto forma parte del ciclo académico **2026-1** y está orientado a talleres prácticos para estudiantes de cuarto medio.
 
 ## Características
 
 - Control desde navegador móvil mediante Wi-Fi Access Point.
-- Interfaz web embebida con modos `Movement` y `Attack`.
+- Interfaz web con modos.
 - Joystick táctil para movimiento `X/Y`.
 - Botones de rotación con comportamiento press-and-hold.
 - Cinemática mecanum para desplazamiento lateral, avance, retroceso y giro.
@@ -64,7 +64,7 @@ Plataforma:
 | --- | --- |
 | Microcontrolador | ESP32-S3 |
 | Framework | Arduino |
-| Servidor | `WebServer` embebido |
+| Servidor | `WebServer`|
 | Red | Wi-Fi Access Point |
 
 Librerías requeridas:
@@ -98,7 +98,7 @@ Librerías requeridas:
 ## Puesta en Marcha
 
 1. Abrir el sketch en Arduino IDE o una herramienta compatible con Arduino Framework.
-2. Seleccionar una placa ESP32-S3 compatible.
+2. Seleccionar la placa ESP32-S3.
 3. Instalar las librerías requeridas.
 4. Cargar el firmware en la ESP32-S3.
 5. Energizar el robot con fuentes adecuadas para lógica, motores y actuadores.
