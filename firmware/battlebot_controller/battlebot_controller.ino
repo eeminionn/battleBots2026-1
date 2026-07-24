@@ -23,12 +23,15 @@
 #include <WebServer.h>
 #include <ESP32Servo.h>
 
+#if __has_include("robot_config.h")
+#include "robot_config.h"
+#else
+#include "robot_config.example.h"
+#endif
+
 // -----------------------------
 // WIFI
 // -----------------------------
-
-const char* ssid = "Robot_Emilio";
-const char* password = "12345678";
 
 WebServer server(80);
 
@@ -889,6 +892,9 @@ void handleAttackCommand() {
       ataque1Detener();
     } else if (cmd == "ASTOP") {
       ataque1Detener();
+    } else {
+      server.send(400, "text/plain", "Unknown attack command");
+      return;
     }
 
     server.send(200, "text/plain", "Attack command received: " + cmd);
@@ -911,15 +917,22 @@ void setup() {
   configurarMotores();
   configurarServoAtaque();
 
-  WiFi.softAP(ssid, password);
+  if (strlen(ROBOT_AP_PASSWORD) < 8) {
+    Serial.println("Robot AP password must contain at least 8 characters.");
+    digitalWrite(MOTOR_STBY, LOW);
+    return;
+  }
+
+  if (!WiFi.softAP(ROBOT_AP_SSID, ROBOT_AP_PASSWORD)) {
+    Serial.println("Could not start the robot access point.");
+    digitalWrite(MOTOR_STBY, LOW);
+    return;
+  }
 
   IPAddress IP = WiFi.softAPIP();
 
   Serial.print("Wi-Fi name: ");
-  Serial.println(ssid);
-
-  Serial.print("Password: ");
-  Serial.println(password);
+  Serial.println(ROBOT_AP_SSID);
 
   Serial.print("Open in phone browser: ");
   Serial.println(IP);
