@@ -21,6 +21,17 @@ Firmware Arduino para el robot BattleBots 2026-1.
 #include <ESP32Servo.h>
 ```
 
-## Nota de operación
+## Configuracion de red
 
-El sketch crea una red Wi-Fi local y expone una interfaz web para control desde navegador móvil. La configuración de red se define en el código fuente.
+El sketch crea una red Wi-Fi local y expone una interfaz web para control desde
+navegador movil. Para usar credenciales propias, copia
+`battlebot_controller/robot_config.example.h` como
+`battlebot_controller/robot_config.h` y cambia sus valores. El archivo local
+esta ignorado por Git.
+
+La clave debe tener al menos ocho caracteres. Si la configuracion es invalida o
+el Access Point no puede iniciarse, el firmware deja el driver de motores en
+standby.
+
+Los comandos de ataque admitidos son `A1_START`, `A1_STOP` y `ASTOP`. Cualquier
+otro valor responde `400 Bad Request`.
